@@ -3,6 +3,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
+	"lark/apps/interfaces/dig"
 	"lark/apps/interfaces/internal/ctrl/ctrl_auth"
 )
 
@@ -15,8 +16,13 @@ func Register(engine *gin.Engine) {
 
 func registerOpenRouter(group *gin.RouterGroup) {
 	authGroup := group.Group("auth")
-	ctrl := ctrl_auth.NewAuthCtrl()
+
+	var ctrl *ctrl_auth.AuthCtrl
+	dig.Invoke(func(c *ctrl_auth.AuthCtrl) {
+		ctrl = c
+	})
 	authGroup.POST("sign_in", ctrl.SignIn)
+	authGroup.POST("sign_up", ctrl.SignUp)
 }
 
 func registerApiRouter(group *gin.RouterGroup) {

@@ -36,10 +36,11 @@ type SignUpReq struct {
 	BirthTs     int64                 `protobuf:"varint,7,opt,name=birth_ts,json=birthTs,proto3" json:"birth_ts,omitempty"`                                        // 生日
 	Email       string                `protobuf:"bytes,8,opt,name=email,proto3" json:"email,omitempty"`                                                            // Email
 	Mobile      string                `protobuf:"bytes,9,opt,name=mobile,proto3" json:"mobile,omitempty"`                                                          // 手机号
-	Avatar      string                `protobuf:"bytes,10,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                         // 头像
+	AvatarKey   string                `protobuf:"bytes,10,opt,name=avatar,proto3" json:"avatar,omitempty"`                                                         // 头像
 	CityId      int64                 `protobuf:"varint,11,opt,name=city_id,json=cityId,proto3" json:"city_id,omitempty"`                                          // 城市ID
 	Code        int64                 `protobuf:"varint,12,opt,name=code,proto3" json:"code,omitempty"`                                                            // 验证码
-	Udid        string                `protobuf:"bytes,13,opt,name=udid,proto3" json:"udid,omitempty"`                                                             // udid
+	Udid        string                `protobuf:"bytes,13,opt,name=udid,proto3" json:"udid,omitempty"`
+	ServerId    int64                 `protobuf:"varint,14,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"` // udid
 }
 
 func (x *SignUpReq) Reset() {
@@ -139,7 +140,7 @@ func (x *SignUpReq) GetMobile() string {
 
 func (x *SignUpReq) GetAvatar() string {
 	if x != nil {
-		return x.Avatar
+		return x.AvatarKey
 	}
 	return ""
 }

@@ -6,14 +6,15 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"lark/examples/pb_auth"
+	"lark/pkg/proto/pb_auth"
 )
 
 func main() {
 	req := &pb_auth.SignUpReq{
 		Nickname: "lark",
 	}
-	conn, err := grpc.Dial("127.0.0.1:8001", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	//conn, err := grpc.Dial("127.0.0.1:8001", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial("127.0.0.1:6600", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		fmt.Println(err.Error())
 		return

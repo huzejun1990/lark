@@ -5,11 +5,11 @@ import (
 	"github.com/go-redsync/redsync/v4"
 	redsyncredis "github.com/go-redsync/redsync/v4/redis"
 	"github.com/go-redsync/redsync/v4/redis/goredis/v9"
+	"github.com/opentracing/opentracing-go/log"
 	"github.com/redis/go-redis/v9"
 	"lark/pkg/conf"
 	"lark/pkg/constant"
 	"lark/pkg/utils"
-	"log/slog"
 	"time"
 )
 
@@ -34,7 +34,8 @@ func NewRedisCluster(cfg *conf.Redis) RedisIface {
 	// 判断是否能够链接到redis
 	_, err = client.Ping(context.Background()).Result()
 	if err != nil {
-		slog.Error(err.Error())
+		//slog.Error(err.Error())
+		log.Error(err)
 		return nil
 	}
 	// redis 锁

@@ -5,7 +5,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
-	"lark/examples/pb_auth"
+	"lark/pkg/proto/pb_auth"
 	"net"
 )
 
